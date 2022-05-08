@@ -3,6 +3,27 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+  const endpoints = [
+    {
+      name: 'GET /trips',
+      description: 'List all the trips',
+    },
+    {
+      name: 'GET /trip',
+      description: 'Get the details of a trip',
+    },
+    {
+      name: 'POST /trip',
+      description: 'Create a new trip',
+    },
+    {
+      name: 'PUT /trips',
+      description: 'Edit new trip',
+    },
+  ]
+  
+  
+  
   return (
     <div className={styles.container}>
       <Head>
@@ -21,26 +42,12 @@ export default function Home() {
         </p>
 
         <div className={styles.grid}>
-        <div className={styles.card}>
-           <h2> <code>GET /trips</code> </h2>
-            <p>List all the trips</p>
-             <p>...</p> </div>
-             
+          {endpoints.map((endpoint) => (
               <div className={styles.card}>
-                 <h2> <code>GET /trip</code> </h2>
-                  <p>Get the details of a trip</p>
-                   <p>...</p> </div>
-                   
-                    <div className={styles.card}>
-                       <h2> <code>POST /trip</code> </h2>
-                        <p>Create a new trip</p> <p>...</p> 
-                        </div>
-                        
-                         <div className={styles.card}> 
-                         <h2> <code>PUT /trip</code> </h2> 
-                         <p>Edit new trip</p> <p>...</p> </div>
-                         
-
+              <h2> <code> {endpoint.name}</code> </h2>
+              <p>{endpoint.description}</p>
+              <p>...</p> </div>
+          ))}
         </div>
       </main>
     </div>
